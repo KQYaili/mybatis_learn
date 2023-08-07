@@ -23,7 +23,7 @@
     用于定义实体类与数据表的映射关系ORM
     引用一个实体的映射关系，配置了resultmap
 -->
-    <resultMap id="studentMap" type="com.lgd.pojo.Student">
+    <resultMap id="studentMap" type="Student">
         <id column="sid" property="stuId"/>
         <result column="stu_num" property="stuNum"/>
         <result column="stu_name" property="stuName"/>
