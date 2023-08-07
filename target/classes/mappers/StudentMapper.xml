@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lgd.dao.StudentDAO">
-    <insert id="insertStudent" parameterType="com.lgd.pojo.Student">
+    <insert id="insertStudent" parameterType="com.lgd.pojo.Student" useGeneratedKeys="true" keyProperty="stuId">
         insert into tb_students(stu_num,stu_name,stu_gender,stu_age)
         values(#{stuNum},#{stuName},#{stuGender},#{stuAge})
     </insert>

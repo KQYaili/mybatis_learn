@@ -3,6 +3,7 @@ package com.lgd.dao;
 import com.lgd.pojo.Student;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface StudentDAO {
@@ -14,5 +15,6 @@ public interface StudentDAO {
     public List<Student> listStudentByPage(@Param("start")int start,
                                            @Param("pageSize")int pageSize);
     public int getCount();
+//    public List<Student> listStudentsByPage(HashMap<String,Integer> map);
 
 }
