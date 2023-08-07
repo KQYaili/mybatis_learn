@@ -32,37 +32,50 @@ public class StudentDAOTest {
 //            e.printStackTrace();
 //        }
         SqlSession sqlSession= MyBatisUtils.getSqlSession();
+        try {
+            StudentDAO studentDAO=sqlSession.getMapper(StudentDAO.class);
+            Student student=new Student(0,"10008","mrihan","女",85);
+            int i=studentDAO.insertStudent(student);
 
-        StudentDAO studentDAO=sqlSession.getMapper(StudentDAO.class);
-        Student student=new Student(0,"10015","lyills","女",14);
-        int i=studentDAO.insertStudent(student);
-        System.out.println(student);
-        sqlSession.commit();
-        System.out.println(i);
+//            studentDAO.updateStudent(student);
+//        System.out.println(student);
+            sqlSession.commit();
+        } catch (Exception e) {
+            sqlSession.rollback();
+        }
+//        System.out.println(i);
     }
 
     @org.junit.Test
     public void deleteStudent() {
-        try {
-            InputStream is = Resources.getResourceAsStream("mybatis-config.xml");
-            SqlSessionFactoryBuilder builder=new SqlSessionFactoryBuilder();
-            SqlSessionFactory factory=builder.build(is);
-            SqlSession sqlSession= factory.openSession();
-            StudentDAO studentDAO=sqlSession.getMapper(StudentDAO.class);
-            int i = studentDAO.deleteStudent("1001");
-            sqlSession.commit();
-            System.out.println(i);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            InputStream is = Resources.getResourceAsStream("mybatis-config.xml");
+//            SqlSessionFactoryBuilder builder=new SqlSessionFactoryBuilder();
+//            SqlSessionFactory factory=builder.build(is);
+//            SqlSession sqlSession= factory.openSession();
+//            StudentDAO studentDAO=sqlSession.getMapper(StudentDAO.class);
+//            int i = studentDAO.deleteStudent("1001");
+//            sqlSession.commit();
+//            System.out.println(i);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        SqlSessionFactory factory=null;
+//        SqlSession sqlSession= MyBatisUtils.getSqlSession();
+//        StudentDAO studentDAO=sqlSession.getMapper(StudentDAO.class);
+        StudentDAO studentDAO=MyBatisUtils.getMapper(StudentDAO.class);
+        int i=studentDAO.deleteStudent("10010");
+//        sqlSession.commit();
+//        System.out.println(i);
     }
 
     @Test
     public void updateStudent() {
-        SqlSession sqlSession= MyBatisUtils.getSqlSession();
-        StudentDAO studentDAO=sqlSession.getMapper(StudentDAO.class);
+//        SqlSession sqlSession= MyBatisUtils.getSqlSession();
+//        StudentDAO studentDAO=sqlSession.getMapper(StudentDAO.class);
+        StudentDAO studentDAO=MyBatisUtils.getMapper(StudentDAO.class);
         int i=studentDAO.updateStudent(new Student(0,"10010","ssss","女",3));
-        sqlSession.commit();
+//        sqlSession.commit();
         System.out.println(i);
     }
 
